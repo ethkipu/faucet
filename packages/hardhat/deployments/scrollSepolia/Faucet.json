@@ -1,0 +1,520 @@
+{
+  "address": "0x3A4E495da6E80eF37542bc1e28F833A23922dE6e",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "payable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "ReentrancyGuardReentrantCall",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "active",
+          "type": "bool"
+        }
+      ],
+      "name": "FaucetStatusUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "_status",
+          "type": "bool"
+        }
+      ],
+      "name": "WhitelistUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_relayer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_balance",
+          "type": "uint256"
+        }
+      ],
+      "name": "WithdrawAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Withdrawal",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "addToWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "dailyLimit",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "deposit",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "faucetActive",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "lastWithdrawTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "removeFromWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "requestWithdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "toggleFaucetStatus",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalLimit",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "totalWithdrawn",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_newLimit",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateDailyLimit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_newLimit",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateTotalLimit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_newFrequency",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateWithdrawFrequency",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "whitelist",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawAll",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawFrequency",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "transactionHash": "0x5ad3e2c62f63fe5c9b3cb3e1c7779dbc9cdedc2883bc21a02ae29c643b09279c",
+  "receipt": {
+    "to": null,
+    "from": "0x79aC3890a0Fcbe179c1e14988E45765c509d92a5",
+    "contractAddress": "0x3A4E495da6E80eF37542bc1e28F833A23922dE6e",
+    "transactionIndex": 0,
+    "gasUsed": "956638",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000004000000000000000001000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000004000000000000000000000040000000000002000000000000000000000",
+    "blockHash": "0xcd12c66ad2956cc925eb56159b24f5300424ff1dda72f0eaa06d3839419c8c20",
+    "transactionHash": "0x5ad3e2c62f63fe5c9b3cb3e1c7779dbc9cdedc2883bc21a02ae29c643b09279c",
+    "logs": [
+      {
+        "transactionIndex": 0,
+        "blockNumber": 6954752,
+        "transactionHash": "0x5ad3e2c62f63fe5c9b3cb3e1c7779dbc9cdedc2883bc21a02ae29c643b09279c",
+        "address": "0x3A4E495da6E80eF37542bc1e28F833A23922dE6e",
+        "topics": [
+          "0xf93f9a76c1bf3444d22400a00cb9fe990e6abe9dbb333fda48859cfee864543d",
+          "0x00000000000000000000000079ac3890a0fcbe179c1e14988e45765c509d92a5"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "logIndex": 0,
+        "blockHash": "0xcd12c66ad2956cc925eb56159b24f5300424ff1dda72f0eaa06d3839419c8c20"
+      }
+    ],
+    "blockNumber": 6954752,
+    "cumulativeGasUsed": "956638",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "58c2622cbb516f6723b178cd344d19bd",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"payable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"ReentrancyGuardReentrantCall\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"active\",\"type\":\"bool\"}],\"name\":\"FaucetStatusUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_status\",\"type\":\"bool\"}],\"name\":\"WhitelistUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_relayer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_balance\",\"type\":\"uint256\"}],\"name\":\"WithdrawAll\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"Withdrawal\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"addToWhitelist\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"dailyLimit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"deposit\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"faucetActive\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"lastWithdrawTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"removeFromWhitelist\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"requestWithdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"toggleFaucetStatus\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalLimit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"totalWithdrawn\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_newLimit\",\"type\":\"uint256\"}],\"name\":\"updateDailyLimit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_newLimit\",\"type\":\"uint256\"}],\"name\":\"updateTotalLimit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_newFrequency\",\"type\":\"uint256\"}],\"name\":\"updateWithdrawFrequency\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"whitelist\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdrawAll\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdrawFrequency\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"errors\":{\"ReentrancyGuardReentrantCall()\":[{\"details\":\"Unauthorized reentrant call.\"}]},\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Faucet.sol\":\"Faucet\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (utils/ReentrancyGuard.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Contract module that helps prevent reentrant calls to a function.\\n *\\n * Inheriting from `ReentrancyGuard` will make the {nonReentrant} modifier\\n * available, which can be applied to functions to make sure there are no nested\\n * (reentrant) calls to them.\\n *\\n * Note that because there is a single `nonReentrant` guard, functions marked as\\n * `nonReentrant` may not call one another. This can be worked around by making\\n * those functions `private`, and then adding `external` `nonReentrant` entry\\n * points to them.\\n *\\n * TIP: If you would like to learn more about reentrancy and alternative ways\\n * to protect against it, check out our blog post\\n * https://blog.openzeppelin.com/reentrancy-after-istanbul/[Reentrancy After Istanbul].\\n */\\nabstract contract ReentrancyGuard {\\n    // Booleans are more expensive than uint256 or any type that takes up a full\\n    // word because each write operation emits an extra SLOAD to first read the\\n    // slot's contents, replace the bits taken up by the boolean, and then write\\n    // back. This is the compiler's defense against contract upgrades and\\n    // pointer aliasing, and it cannot be disabled.\\n\\n    // The values being non-zero value makes deployment a bit more expensive,\\n    // but in exchange the refund on every call to nonReentrant will be lower in\\n    // amount. Since refunds are capped to a percentage of the total\\n    // transaction's gas, it is best to keep them low in cases like this one, to\\n    // increase the likelihood of the full refund coming into effect.\\n    uint256 private constant NOT_ENTERED = 1;\\n    uint256 private constant ENTERED = 2;\\n\\n    uint256 private _status;\\n\\n    /**\\n     * @dev Unauthorized reentrant call.\\n     */\\n    error ReentrancyGuardReentrantCall();\\n\\n    constructor() {\\n        _status = NOT_ENTERED;\\n    }\\n\\n    /**\\n     * @dev Prevents a contract from calling itself, directly or indirectly.\\n     * Calling a `nonReentrant` function from another `nonReentrant`\\n     * function is not supported. It is possible to prevent this from happening\\n     * by making the `nonReentrant` function external, and making it call a\\n     * `private` function that does the actual work.\\n     */\\n    modifier nonReentrant() {\\n        _nonReentrantBefore();\\n        _;\\n        _nonReentrantAfter();\\n    }\\n\\n    function _nonReentrantBefore() private {\\n        // On the first call to nonReentrant, _status will be NOT_ENTERED\\n        if (_status == ENTERED) {\\n            revert ReentrancyGuardReentrantCall();\\n        }\\n\\n        // Any calls to nonReentrant after this point will fail\\n        _status = ENTERED;\\n    }\\n\\n    function _nonReentrantAfter() private {\\n        // By storing the original value once again, a refund is triggered (see\\n        // https://eips.ethereum.org/EIPS/eip-2200)\\n        _status = NOT_ENTERED;\\n    }\\n\\n    /**\\n     * @dev Returns true if the reentrancy guard is currently set to \\\"entered\\\", which indicates there is a\\n     * `nonReentrant` function in the call stack.\\n     */\\n    function _reentrancyGuardEntered() internal view returns (bool) {\\n        return _status == ENTERED;\\n    }\\n}\\n\",\"keccak256\":\"0xf980daa263b661ab8ddee7d4fd833c7da7e7995e2c359ff1f17e67e4112f2236\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/cryptography/ECDSA.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (utils/cryptography/ECDSA.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Elliptic Curve Digital Signature Algorithm (ECDSA) operations.\\n *\\n * These functions can be used to verify that a message was signed by the holder\\n * of the private keys of a given address.\\n */\\nlibrary ECDSA {\\n    enum RecoverError {\\n        NoError,\\n        InvalidSignature,\\n        InvalidSignatureLength,\\n        InvalidSignatureS\\n    }\\n\\n    /**\\n     * @dev The signature derives the `address(0)`.\\n     */\\n    error ECDSAInvalidSignature();\\n\\n    /**\\n     * @dev The signature has an invalid length.\\n     */\\n    error ECDSAInvalidSignatureLength(uint256 length);\\n\\n    /**\\n     * @dev The signature has an S value that is in the upper half order.\\n     */\\n    error ECDSAInvalidSignatureS(bytes32 s);\\n\\n    /**\\n     * @dev Returns the address that signed a hashed message (`hash`) with `signature` or an error. This will not\\n     * return address(0) without also returning an error description. Errors are documented using an enum (error type)\\n     * and a bytes32 providing additional information about the error.\\n     *\\n     * If no error is returned, then the address can be used for verification purposes.\\n     *\\n     * The `ecrecover` EVM precompile allows for malleable (non-unique) signatures:\\n     * this function rejects them by requiring the `s` value to be in the lower\\n     * half order, and the `v` value to be either 27 or 28.\\n     *\\n     * IMPORTANT: `hash` _must_ be the result of a hash operation for the\\n     * verification to be secure: it is possible to craft signatures that\\n     * recover to arbitrary addresses for non-hashed data. A safe way to ensure\\n     * this is by receiving a hash of the original message (which may otherwise\\n     * be too long), and then calling {MessageHashUtils-toEthSignedMessageHash} on it.\\n     *\\n     * Documentation for signature generation:\\n     * - with https://web3js.readthedocs.io/en/v1.3.4/web3-eth-accounts.html#sign[Web3.js]\\n     * - with https://docs.ethers.io/v5/api/signer/#Signer-signMessage[ethers]\\n     */\\n    function tryRecover(bytes32 hash, bytes memory signature) internal pure returns (address, RecoverError, bytes32) {\\n        if (signature.length == 65) {\\n            bytes32 r;\\n            bytes32 s;\\n            uint8 v;\\n            // ecrecover takes the signature parameters, and the only way to get them\\n            // currently is to use assembly.\\n            /// @solidity memory-safe-assembly\\n            assembly {\\n                r := mload(add(signature, 0x20))\\n                s := mload(add(signature, 0x40))\\n                v := byte(0, mload(add(signature, 0x60)))\\n            }\\n            return tryRecover(hash, v, r, s);\\n        } else {\\n            return (address(0), RecoverError.InvalidSignatureLength, bytes32(signature.length));\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the address that signed a hashed message (`hash`) with\\n     * `signature`. This address can then be used for verification purposes.\\n     *\\n     * The `ecrecover` EVM precompile allows for malleable (non-unique) signatures:\\n     * this function rejects them by requiring the `s` value to be in the lower\\n     * half order, and the `v` value to be either 27 or 28.\\n     *\\n     * IMPORTANT: `hash` _must_ be the result of a hash operation for the\\n     * verification to be secure: it is possible to craft signatures that\\n     * recover to arbitrary addresses for non-hashed data. A safe way to ensure\\n     * this is by receiving a hash of the original message (which may otherwise\\n     * be too long), and then calling {MessageHashUtils-toEthSignedMessageHash} on it.\\n     */\\n    function recover(bytes32 hash, bytes memory signature) internal pure returns (address) {\\n        (address recovered, RecoverError error, bytes32 errorArg) = tryRecover(hash, signature);\\n        _throwError(error, errorArg);\\n        return recovered;\\n    }\\n\\n    /**\\n     * @dev Overload of {ECDSA-tryRecover} that receives the `r` and `vs` short-signature fields separately.\\n     *\\n     * See https://eips.ethereum.org/EIPS/eip-2098[EIP-2098 short signatures]\\n     */\\n    function tryRecover(bytes32 hash, bytes32 r, bytes32 vs) internal pure returns (address, RecoverError, bytes32) {\\n        unchecked {\\n            bytes32 s = vs & bytes32(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);\\n            // We do not check for an overflow here since the shift operation results in 0 or 1.\\n            uint8 v = uint8((uint256(vs) >> 255) + 27);\\n            return tryRecover(hash, v, r, s);\\n        }\\n    }\\n\\n    /**\\n     * @dev Overload of {ECDSA-recover} that receives the `r and `vs` short-signature fields separately.\\n     */\\n    function recover(bytes32 hash, bytes32 r, bytes32 vs) internal pure returns (address) {\\n        (address recovered, RecoverError error, bytes32 errorArg) = tryRecover(hash, r, vs);\\n        _throwError(error, errorArg);\\n        return recovered;\\n    }\\n\\n    /**\\n     * @dev Overload of {ECDSA-tryRecover} that receives the `v`,\\n     * `r` and `s` signature fields separately.\\n     */\\n    function tryRecover(\\n        bytes32 hash,\\n        uint8 v,\\n        bytes32 r,\\n        bytes32 s\\n    ) internal pure returns (address, RecoverError, bytes32) {\\n        // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature\\n        // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines\\n        // the valid range for s in (301): 0 < s < secp256k1n \\u00f7 2 + 1, and for v in (302): v \\u2208 {27, 28}. Most\\n        // signatures from current libraries generate a unique signature with an s-value in the lower half order.\\n        //\\n        // If your library generates malleable signatures, such as s-values in the upper range, calculate a new s-value\\n        // with 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141 - s1 and flip v from 27 to 28 or\\n        // vice versa. If your library also generates signatures with 0/1 for v instead 27/28, add 27 to v to accept\\n        // these malleable signatures as well.\\n        if (uint256(s) > 0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D576E7357A4501DDFE92F46681B20A0) {\\n            return (address(0), RecoverError.InvalidSignatureS, s);\\n        }\\n\\n        // If the signature is valid (and not malleable), return the signer address\\n        address signer = ecrecover(hash, v, r, s);\\n        if (signer == address(0)) {\\n            return (address(0), RecoverError.InvalidSignature, bytes32(0));\\n        }\\n\\n        return (signer, RecoverError.NoError, bytes32(0));\\n    }\\n\\n    /**\\n     * @dev Overload of {ECDSA-recover} that receives the `v`,\\n     * `r` and `s` signature fields separately.\\n     */\\n    function recover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal pure returns (address) {\\n        (address recovered, RecoverError error, bytes32 errorArg) = tryRecover(hash, v, r, s);\\n        _throwError(error, errorArg);\\n        return recovered;\\n    }\\n\\n    /**\\n     * @dev Optionally reverts with the corresponding custom error according to the `error` argument provided.\\n     */\\n    function _throwError(RecoverError error, bytes32 errorArg) private pure {\\n        if (error == RecoverError.NoError) {\\n            return; // no error: do nothing\\n        } else if (error == RecoverError.InvalidSignature) {\\n            revert ECDSAInvalidSignature();\\n        } else if (error == RecoverError.InvalidSignatureLength) {\\n            revert ECDSAInvalidSignatureLength(uint256(errorArg));\\n        } else if (error == RecoverError.InvalidSignatureS) {\\n            revert ECDSAInvalidSignatureS(errorArg);\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0xeed0a08b0b091f528356cbc7245891a4c748682d4f6a18055e8e6ca77d12a6cf\",\"license\":\"MIT\"},\"contracts/Faucet.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.0;\\r\\n\\r\\nimport \\\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\\\";\\r\\nimport \\\"@openzeppelin/contracts/utils/cryptography/ECDSA.sol\\\";\\r\\n\\r\\ncontract Faucet is ReentrancyGuard {\\r\\n\\tusing ECDSA for bytes32;\\r\\n\\r\\n\\taddress public owner;\\r\\n\\tuint256 public dailyLimit;\\r\\n\\tuint256 public totalLimit;\\r\\n\\tbool public faucetActive = true;\\r\\n\\r\\n\\tmapping(address => uint256) public totalWithdrawn;\\r\\n\\tmapping(address => uint256) public lastWithdrawTime;\\r\\n\\tuint256 public withdrawFrequency;\\r\\n\\tmapping(address => bool) public whitelist;\\r\\n\\r\\n\\t// Events for logging actions in the contract\\r\\n\\tevent WhitelistUpdated(address indexed _address, bool _status);\\r\\n\\tevent Withdrawal(address indexed _user, uint256 _amount);\\r\\n\\tevent WithdrawAll(address indexed _relayer, uint256 _balance);\\r\\n\\tevent OwnershipTransferred(\\r\\n\\t\\taddress indexed previousOwner,\\r\\n\\t\\taddress indexed newOwner\\r\\n\\t);\\r\\n\\tevent FaucetStatusUpdated(bool active);\\r\\n\\r\\n\\t// Modifier to restrict access to the owner only\\r\\n\\tmodifier onlyOwner() {\\r\\n\\t\\trequire(msg.sender == owner, \\\"No eres el propietario\\\");\\r\\n\\t\\t_;\\r\\n\\t}\\r\\n\\r\\n\\t// Modifier to restrict access to whitelisted addresses only\\r\\n\\tmodifier onlyWhitelisted() {\\r\\n\\t\\trequire(whitelist[msg.sender], \\\"Address no esta en lista blanca\\\");\\r\\n\\t\\t_;\\r\\n\\t}\\r\\n\\r\\n\\t// Modifier to check if the faucet is active\\r\\n\\tmodifier faucetIsActive() {\\r\\n\\t\\trequire(faucetActive, \\\"El faucet se encuentra inactivo\\\");\\r\\n\\t\\t_;\\r\\n\\t}\\r\\n\\r\\n\\t// Constructor to set the contract deployer as the owner\\r\\n\\tconstructor() payable {\\r\\n\\t\\tdailyLimit = 0.1 ether;\\r\\n\\t\\ttotalLimit = 1 ether;\\r\\n\\t\\twithdrawFrequency = 24 hours;\\r\\n\\t\\towner = msg.sender;\\r\\n\\t\\twhitelist[owner] = true;\\r\\n\\t\\temit WhitelistUpdated(owner, true);\\r\\n\\t}\\r\\n\\r\\n\\t// Function to add an address to the whitelist, only callable by the owner\\r\\n\\tfunction addToWhitelist(address _address) external onlyOwner {\\r\\n\\t\\twhitelist[_address] = true;\\r\\n\\t\\temit WhitelistUpdated(_address, true);\\r\\n\\t}\\r\\n\\r\\n\\t// Function to remove an address from the whitelist, only callable by the owner\\r\\n\\tfunction removeFromWhitelist(address _address) external onlyOwner {\\r\\n\\t\\twhitelist[_address] = false;\\r\\n\\t\\temit WhitelistUpdated(_address, false);\\r\\n\\t}\\r\\n\\r\\n\\t// Function to deposit ETH into the contract, only callable by the owner\\r\\n\\tfunction deposit() external payable onlyOwner {}\\r\\n\\r\\n\\t// Function to allow a third party (relayer) to request withdrawal on behalf of a user\\r\\n\\tfunction requestWithdraw(\\r\\n\\t\\taddress _user,\\r\\n\\t\\tuint256 _amount\\r\\n\\t) external onlyWhitelisted nonReentrant faucetIsActive {\\r\\n\\t\\trequire(_amount <= dailyLimit, \\\"Ha excedido el monto diario\\\");\\r\\n\\t\\trequire(\\r\\n\\t\\t\\ttotalWithdrawn[_user] + _amount <= totalLimit,\\r\\n\\t\\t\\t\\\"Ha excedido el limite total\\\"\\r\\n\\t\\t);\\r\\n\\t\\trequire(\\r\\n\\t\\t\\tblock.timestamp - lastWithdrawTime[_user] >= withdrawFrequency,\\r\\n\\t\\t\\t\\\"Retiros solo permitidos en base al limite diario\\\"\\r\\n\\t\\t);\\r\\n\\t\\trequire(\\r\\n\\t\\t\\taddress(this).balance >= _amount,\\r\\n\\t\\t\\t\\\"No hay fondos suficientes en el faucet\\\"\\r\\n\\t\\t);\\r\\n\\r\\n\\t\\ttotalWithdrawn[_user] += _amount;\\r\\n\\t\\tlastWithdrawTime[_user] = block.timestamp;\\r\\n\\r\\n\\t\\t// Transfer ETH to the user\\r\\n\\t\\t(bool success, ) = _user.call{ value: _amount }(\\\"\\\");\\r\\n\\t\\trequire(success, \\\"Transferencia fallida\\\");\\r\\n\\r\\n\\t\\temit Withdrawal(_user, _amount);\\r\\n\\t}\\r\\n\\r\\n\\t// Function to allow whitelisted addresses to withdraw the entire balance of the faucet\\r\\n\\tfunction withdrawAll()\\r\\n\\t\\texternal\\r\\n\\t\\tonlyWhitelisted\\r\\n\\t\\tnonReentrant\\r\\n\\t\\tfaucetIsActive\\r\\n\\t{\\r\\n\\t\\tuint256 balance = address(this).balance;\\r\\n\\t\\trequire(balance > 0, \\\"No hay fondos para retirar\\\");\\r\\n\\r\\n\\t\\t// Transfer entire balance to the contract owner\\r\\n\\t\\t(bool success, ) = owner.call{ value: balance }(\\\"\\\");\\r\\n\\t\\trequire(success, \\\"Transferencia fallida\\\");\\r\\n\\r\\n\\t\\temit WithdrawAll(msg.sender, balance);\\r\\n\\t}\\r\\n\\r\\n\\t// Function to transfer ownership of the contract to a new owner\\r\\n\\tfunction transferOwnership(address newOwner) external onlyOwner {\\r\\n\\t\\trequire(\\r\\n\\t\\t\\tnewOwner != address(0),\\r\\n\\t\\t\\t\\\"Nuevo propietario no puede ser address 0\\\"\\r\\n\\t\\t);\\r\\n\\t\\temit OwnershipTransferred(owner, newOwner);\\r\\n\\t\\towner = newOwner;\\r\\n\\t}\\r\\n\\r\\n\\t// Function to update daily limit, only callable by the owner\\r\\n\\tfunction updateDailyLimit(uint256 _newLimit) external onlyOwner {\\r\\n\\t\\tdailyLimit = _newLimit;\\r\\n\\t}\\r\\n\\r\\n\\t// Function to update total limit, only callable by the owner\\r\\n\\tfunction updateTotalLimit(uint256 _newLimit) external onlyOwner {\\r\\n\\t\\ttotalLimit = _newLimit;\\r\\n\\t}\\r\\n\\r\\n\\t// Function to update withdraw frequency, only callable by the owner\\r\\n\\tfunction updateWithdrawFrequency(uint256 _newFrequency) external onlyOwner {\\r\\n\\t\\twithdrawFrequency = _newFrequency;\\r\\n\\t}\\r\\n\\r\\n\\t// Function to activate or deactivate the faucet, only callable by the owner\\r\\n\\tfunction toggleFaucetStatus() external onlyOwner {\\r\\n\\t\\tfaucetActive = !faucetActive;\\r\\n\\t\\temit FaucetStatusUpdated(faucetActive);\\r\\n\\t}\\r\\n\\r\\n\\t// Function to get the current balance of the contract\\r\\n\\tfunction getBalance() external view returns (uint256) {\\r\\n\\t\\treturn address(this).balance;\\r\\n\\t}\\r\\n\\r\\n\\t// Fallback function to receive ETH directly\\r\\n\\treceive() external payable {}\\r\\n}\\r\\n\",\"keccak256\":\"0x783f18429b4245b6d267a113e58c83cc2707f52e349e92b50ca8963c2467ac42\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060408181526004805460ff199081166001908117909255600082815567016345785d8a0000600255670de0b6b3a76400006003556201518060075582546001600160a01b03191633908117845581526008602090815293902080549091168217905580549083526001600160a01b0316917ff93f9a76c1bf3444d22400a00cb9fe990e6abe9dbb333fda48859cfee864543d9190a2610d78806100a56000396000f3fe6080604052600436106101185760003560e01c8063853828b6116100a0578063a36298c711610064578063a36298c71461030e578063d0e30db014610324578063e43252d71461032c578063f2fde38b1461034c578063f8175d781461036c57600080fd5b8063853828b6146102475780638ab1d6811461025c5780638da5cb5b1461027c57806390559584146102b45780639b19251a146102de57600080fd5b8063397a1b28116100e7578063397a1b28146101ba578063416053aa146101dc5780634eb8b061146101f1578063672a5ff71461021157806367eeba0c1461023157600080fd5b80630a64143a146101245780631031ec311461016457806312065fe014610191578063258aa43b146101a457600080fd5b3661011f57005b600080fd5b34801561013057600080fd5b5061015161013f366004610c6b565b60056020526000908152604090205481565b6040519081526020015b60405180910390f35b34801561017057600080fd5b5061015161017f366004610c6b565b60066020526000908152604090205481565b34801561019d57600080fd5b5047610151565b3480156101b057600080fd5b5061015160075481565b3480156101c657600080fd5b506101da6101d5366004610c8d565b61038c565b005b3480156101e857600080fd5b506101da610724565b3480156101fd57600080fd5b506101da61020c366004610cb7565b61079b565b34801561021d57600080fd5b506101da61022c366004610cb7565b6107ca565b34801561023d57600080fd5b5061015160025481565b34801561025357600080fd5b506101da6107f9565b34801561026857600080fd5b506101da610277366004610c6b565b6109de565b34801561028857600080fd5b5060015461029c906001600160a01b031681565b6040516001600160a01b03909116815260200161015b565b3480156102c057600080fd5b506004546102ce9060ff1681565b604051901515815260200161015b565b3480156102ea57600080fd5b506102ce6102f9366004610c6b565b60086020526000908152604090205460ff1681565b34801561031a57600080fd5b5061015160035481565b6101da610a5e565b34801561033857600080fd5b506101da610347366004610c6b565b610a88565b34801561035857600080fd5b506101da610367366004610c6b565b610b09565b34801561037857600080fd5b506101da610387366004610cb7565b610bf6565b3360009081526008602052604090205460ff166103f05760405162461bcd60e51b815260206004820152601f60248201527f41646472657373206e6f206573746120656e206c6973746120626c616e63610060448201526064015b60405180910390fd5b6103f8610c25565b60045460ff1661044a5760405162461bcd60e51b815260206004820152601f60248201527f456c2066617563657420736520656e6375656e74726120696e61637469766f0060448201526064016103e7565b60025481111561049c5760405162461bcd60e51b815260206004820152601b60248201527f486120657863656469646f20656c206d6f6e746f2064696172696f000000000060448201526064016103e7565b6003546001600160a01b0383166000908152600560205260409020546104c3908390610ce6565b11156105115760405162461bcd60e51b815260206004820152601b60248201527f486120657863656469646f20656c206c696d69746520746f74616c000000000060448201526064016103e7565b6007546001600160a01b0383166000908152600660205260409020546105379042610cff565b101561059e5760405162461bcd60e51b815260206004820152603060248201527f52657469726f7320736f6c6f207065726d697469646f7320656e20626173652060448201526f616c206c696d6974652064696172696f60801b60648201526084016103e7565b804710156105fd5760405162461bcd60e51b815260206004820152602660248201527f4e6f2068617920666f6e646f7320737566696369656e74657320656e20656c2060448201526519985d58d95d60d21b60648201526084016103e7565b6001600160a01b03821660009081526005602052604081208054839290610625908490610ce6565b90915550506001600160a01b0382166000818152600660205260408082204290555190919083908381818185875af1925050503d8060008114610684576040519150601f19603f3d011682016040523d82523d6000602084013e610689565b606091505b50509050806106d25760405162461bcd60e51b81526020600482015260156024820152745472616e73666572656e6369612066616c6c69646160581b60448201526064016103e7565b826001600160a01b03167f7fcf532c15f0a6db0bd6d0e038bea71d30d808c7d98cb3bf7268a95bf5081b658360405161070d91815260200190565b60405180910390a2506107206001600055565b5050565b6001546001600160a01b0316331461074e5760405162461bcd60e51b81526004016103e790610d12565b6004805460ff8082161560ff1990921682179092556040519116151581527f4099d2ed1eb5de070fdf071f999caa3e5860d56b69fd3a5105c3e162add217679060200160405180910390a1565b6001546001600160a01b031633146107c55760405162461bcd60e51b81526004016103e790610d12565b600355565b6001546001600160a01b031633146107f45760405162461bcd60e51b81526004016103e790610d12565b600755565b3360009081526008602052604090205460ff166108585760405162461bcd60e51b815260206004820152601f60248201527f41646472657373206e6f206573746120656e206c6973746120626c616e63610060448201526064016103e7565b610860610c25565b60045460ff166108b25760405162461bcd60e51b815260206004820152601f60248201527f456c2066617563657420736520656e6375656e74726120696e61637469766f0060448201526064016103e7565b47806109005760405162461bcd60e51b815260206004820152601a60248201527f4e6f2068617920666f6e646f732070617261207265746972617200000000000060448201526064016103e7565b6001546040516000916001600160a01b03169083908381818185875af1925050503d806000811461094d576040519150601f19603f3d011682016040523d82523d6000602084013e610952565b606091505b505090508061099b5760405162461bcd60e51b81526020600482015260156024820152745472616e73666572656e6369612066616c6c69646160581b60448201526064016103e7565b60405182815233907fd7a4aa9f3dca5f6606ac15d7e1850920201bbb02c38cd986793779f58ae0dfd39060200160405180910390a250506109dc6001600055565b565b6001546001600160a01b03163314610a085760405162461bcd60e51b81526004016103e790610d12565b6001600160a01b0381166000818152600860209081526040808320805460ff19169055519182527ff93f9a76c1bf3444d22400a00cb9fe990e6abe9dbb333fda48859cfee864543d91015b60405180910390a250565b6001546001600160a01b031633146109dc5760405162461bcd60e51b81526004016103e790610d12565b6001546001600160a01b03163314610ab25760405162461bcd60e51b81526004016103e790610d12565b6001600160a01b038116600081815260086020908152604091829020805460ff1916600190811790915591519182527ff93f9a76c1bf3444d22400a00cb9fe990e6abe9dbb333fda48859cfee864543d9101610a53565b6001546001600160a01b03163314610b335760405162461bcd60e51b81526004016103e790610d12565b6001600160a01b038116610b9a5760405162461bcd60e51b815260206004820152602860248201527f4e7565766f2070726f706965746172696f206e6f207075656465207365722061604482015267064647265737320360c41b60648201526084016103e7565b6001546040516001600160a01b038084169216907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a3600180546001600160a01b0319166001600160a01b0392909216919091179055565b6001546001600160a01b03163314610c205760405162461bcd60e51b81526004016103e790610d12565b600255565b600260005403610c4857604051633ee5aeb560e01b815260040160405180910390fd5b6002600055565b80356001600160a01b0381168114610c6657600080fd5b919050565b600060208284031215610c7d57600080fd5b610c8682610c4f565b9392505050565b60008060408385031215610ca057600080fd5b610ca983610c4f565b946020939093013593505050565b600060208284031215610cc957600080fd5b5035919050565b634e487b7160e01b600052601160045260246000fd5b80820180821115610cf957610cf9610cd0565b92915050565b81810381811115610cf957610cf9610cd0565b6020808252601690820152754e6f206572657320656c2070726f706965746172696f60501b60408201526060019056fea264697066735822122051c48ecff19f0cb573101854beca32c5fa9f0127456c03fe41f412ee5937063764736f6c63430008140033",
+  "deployedBytecode": "0x6080604052600436106101185760003560e01c8063853828b6116100a0578063a36298c711610064578063a36298c71461030e578063d0e30db014610324578063e43252d71461032c578063f2fde38b1461034c578063f8175d781461036c57600080fd5b8063853828b6146102475780638ab1d6811461025c5780638da5cb5b1461027c57806390559584146102b45780639b19251a146102de57600080fd5b8063397a1b28116100e7578063397a1b28146101ba578063416053aa146101dc5780634eb8b061146101f1578063672a5ff71461021157806367eeba0c1461023157600080fd5b80630a64143a146101245780631031ec311461016457806312065fe014610191578063258aa43b146101a457600080fd5b3661011f57005b600080fd5b34801561013057600080fd5b5061015161013f366004610c6b565b60056020526000908152604090205481565b6040519081526020015b60405180910390f35b34801561017057600080fd5b5061015161017f366004610c6b565b60066020526000908152604090205481565b34801561019d57600080fd5b5047610151565b3480156101b057600080fd5b5061015160075481565b3480156101c657600080fd5b506101da6101d5366004610c8d565b61038c565b005b3480156101e857600080fd5b506101da610724565b3480156101fd57600080fd5b506101da61020c366004610cb7565b61079b565b34801561021d57600080fd5b506101da61022c366004610cb7565b6107ca565b34801561023d57600080fd5b5061015160025481565b34801561025357600080fd5b506101da6107f9565b34801561026857600080fd5b506101da610277366004610c6b565b6109de565b34801561028857600080fd5b5060015461029c906001600160a01b031681565b6040516001600160a01b03909116815260200161015b565b3480156102c057600080fd5b506004546102ce9060ff1681565b604051901515815260200161015b565b3480156102ea57600080fd5b506102ce6102f9366004610c6b565b60086020526000908152604090205460ff1681565b34801561031a57600080fd5b5061015160035481565b6101da610a5e565b34801561033857600080fd5b506101da610347366004610c6b565b610a88565b34801561035857600080fd5b506101da610367366004610c6b565b610b09565b34801561037857600080fd5b506101da610387366004610cb7565b610bf6565b3360009081526008602052604090205460ff166103f05760405162461bcd60e51b815260206004820152601f60248201527f41646472657373206e6f206573746120656e206c6973746120626c616e63610060448201526064015b60405180910390fd5b6103f8610c25565b60045460ff1661044a5760405162461bcd60e51b815260206004820152601f60248201527f456c2066617563657420736520656e6375656e74726120696e61637469766f0060448201526064016103e7565b60025481111561049c5760405162461bcd60e51b815260206004820152601b60248201527f486120657863656469646f20656c206d6f6e746f2064696172696f000000000060448201526064016103e7565b6003546001600160a01b0383166000908152600560205260409020546104c3908390610ce6565b11156105115760405162461bcd60e51b815260206004820152601b60248201527f486120657863656469646f20656c206c696d69746520746f74616c000000000060448201526064016103e7565b6007546001600160a01b0383166000908152600660205260409020546105379042610cff565b101561059e5760405162461bcd60e51b815260206004820152603060248201527f52657469726f7320736f6c6f207065726d697469646f7320656e20626173652060448201526f616c206c696d6974652064696172696f60801b60648201526084016103e7565b804710156105fd5760405162461bcd60e51b815260206004820152602660248201527f4e6f2068617920666f6e646f7320737566696369656e74657320656e20656c2060448201526519985d58d95d60d21b60648201526084016103e7565b6001600160a01b03821660009081526005602052604081208054839290610625908490610ce6565b90915550506001600160a01b0382166000818152600660205260408082204290555190919083908381818185875af1925050503d8060008114610684576040519150601f19603f3d011682016040523d82523d6000602084013e610689565b606091505b50509050806106d25760405162461bcd60e51b81526020600482015260156024820152745472616e73666572656e6369612066616c6c69646160581b60448201526064016103e7565b826001600160a01b03167f7fcf532c15f0a6db0bd6d0e038bea71d30d808c7d98cb3bf7268a95bf5081b658360405161070d91815260200190565b60405180910390a2506107206001600055565b5050565b6001546001600160a01b0316331461074e5760405162461bcd60e51b81526004016103e790610d12565b6004805460ff8082161560ff1990921682179092556040519116151581527f4099d2ed1eb5de070fdf071f999caa3e5860d56b69fd3a5105c3e162add217679060200160405180910390a1565b6001546001600160a01b031633146107c55760405162461bcd60e51b81526004016103e790610d12565b600355565b6001546001600160a01b031633146107f45760405162461bcd60e51b81526004016103e790610d12565b600755565b3360009081526008602052604090205460ff166108585760405162461bcd60e51b815260206004820152601f60248201527f41646472657373206e6f206573746120656e206c6973746120626c616e63610060448201526064016103e7565b610860610c25565b60045460ff166108b25760405162461bcd60e51b815260206004820152601f60248201527f456c2066617563657420736520656e6375656e74726120696e61637469766f0060448201526064016103e7565b47806109005760405162461bcd60e51b815260206004820152601a60248201527f4e6f2068617920666f6e646f732070617261207265746972617200000000000060448201526064016103e7565b6001546040516000916001600160a01b03169083908381818185875af1925050503d806000811461094d576040519150601f19603f3d011682016040523d82523d6000602084013e610952565b606091505b505090508061099b5760405162461bcd60e51b81526020600482015260156024820152745472616e73666572656e6369612066616c6c69646160581b60448201526064016103e7565b60405182815233907fd7a4aa9f3dca5f6606ac15d7e1850920201bbb02c38cd986793779f58ae0dfd39060200160405180910390a250506109dc6001600055565b565b6001546001600160a01b03163314610a085760405162461bcd60e51b81526004016103e790610d12565b6001600160a01b0381166000818152600860209081526040808320805460ff19169055519182527ff93f9a76c1bf3444d22400a00cb9fe990e6abe9dbb333fda48859cfee864543d91015b60405180910390a250565b6001546001600160a01b031633146109dc5760405162461bcd60e51b81526004016103e790610d12565b6001546001600160a01b03163314610ab25760405162461bcd60e51b81526004016103e790610d12565b6001600160a01b038116600081815260086020908152604091829020805460ff1916600190811790915591519182527ff93f9a76c1bf3444d22400a00cb9fe990e6abe9dbb333fda48859cfee864543d9101610a53565b6001546001600160a01b03163314610b335760405162461bcd60e51b81526004016103e790610d12565b6001600160a01b038116610b9a5760405162461bcd60e51b815260206004820152602860248201527f4e7565766f2070726f706965746172696f206e6f207075656465207365722061604482015267064647265737320360c41b60648201526084016103e7565b6001546040516001600160a01b038084169216907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a3600180546001600160a01b0319166001600160a01b0392909216919091179055565b6001546001600160a01b03163314610c205760405162461bcd60e51b81526004016103e790610d12565b600255565b600260005403610c4857604051633ee5aeb560e01b815260040160405180910390fd5b6002600055565b80356001600160a01b0381168114610c6657600080fd5b919050565b600060208284031215610c7d57600080fd5b610c8682610c4f565b9392505050565b60008060408385031215610ca057600080fd5b610ca983610c4f565b946020939093013593505050565b600060208284031215610cc957600080fd5b5035919050565b634e487b7160e01b600052601160045260246000fd5b80820180821115610cf957610cf9610cd0565b92915050565b81810381811115610cf957610cf9610cd0565b6020808252601690820152754e6f206572657320656c2070726f706965746172696f60501b60408201526060019056fea264697066735822122051c48ecff19f0cb573101854beca32c5fa9f0127456c03fe41f412ee5937063764736f6c63430008140033",
+  "devdoc": {
+    "errors": {
+      "ReentrancyGuardReentrantCall()": [
+        {
+          "details": "Unauthorized reentrant call."
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 10,
+        "contract": "contracts/Faucet.sol:Faucet",
+        "label": "_status",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 427,
+        "contract": "contracts/Faucet.sol:Faucet",
+        "label": "owner",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 429,
+        "contract": "contracts/Faucet.sol:Faucet",
+        "label": "dailyLimit",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 431,
+        "contract": "contracts/Faucet.sol:Faucet",
+        "label": "totalLimit",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 434,
+        "contract": "contracts/Faucet.sol:Faucet",
+        "label": "faucetActive",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_bool"
+      },
+      {
+        "astId": 438,
+        "contract": "contracts/Faucet.sol:Faucet",
+        "label": "totalWithdrawn",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 442,
+        "contract": "contracts/Faucet.sol:Faucet",
+        "label": "lastWithdrawTime",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 444,
+        "contract": "contracts/Faucet.sol:Faucet",
+        "label": "withdrawFrequency",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 448,
+        "contract": "contracts/Faucet.sol:Faucet",
+        "label": "whitelist",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_mapping(t_address,t_bool)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
