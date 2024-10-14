@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -12,10 +13,8 @@ import {
   //  hardhat, // holesky,
   scrollSepolia,
 } from "viem/chains";
-import { useAccount, useWriteContract } from "wagmi";
-import { usePublicClient } from "wagmi";
+import { useAccount, usePublicClient, useWriteContract } from "wagmi";
 import { WriteContractReturnType } from "wagmi/actions";
-import { BanknotesIcon } from "@heroicons/react/24/outline";
 import { AddressInput } from "~~/components/scaffold-eth";
 import { useScaffoldEventHistory, useScaffoldReadContract, useTransactor } from "~~/hooks/scaffold-eth";
 import { useScaffoldContract } from "~~/hooks/scaffold-eth/useScaffoldContract";
@@ -124,49 +123,71 @@ const Home: NextPage = () => {
 
   return (
     <div
-      className={`flex flex-col items-center self-center w-full px-4 mt-2 ${
+      className={`container flex flex-col items-center self-center w-full px-4 mt-2 ${
         mounted && resolvedTheme === "dark" ? "text-white" : "text-indigo-400"
       }`}
     >
-      <div className="mb-2 text-3xl font-bold text-center">Faucet ETH Kipu - Scroll Sepolia</div>
-      <div className="mb-4 text-xl">
-        Recibe {dailyLimitValue} ETH para tus ejercicios del Ethereum Developer Pack de ETH Kipu
-      </div>
-      <div className="flex flex-col flex-grow w-full mb-4 md:w-5/6 lg:w-4/5 xl:w-3/5">
-        <div className="space-y-3">
-          <div className="flex flex-col space-y-3">
+      <div className="flex flex-col flex-grow w-full mt-8 mb-4 md:w-5/6 lg:w-4/5">
+        <div className="space-y-8">
+          <div className="max-w-5/6 flex flex-col sm:flex-row justify-between rounded-lg overflow-hidden rounded-xl border-2 border-primary shadow-custom-left-lg bg-neutral-content">
+            <div className="w-full lg:w-1/2 p-6 flex flex-col justify-between">
+              <div>
+                <h2 className="text-5xl font-black mb-4">Kipu Faucet</h2>
+                <p className="text-xl font-bold mb-6">
+                  Recibe 0.1 ETH en testnet para tus ejercicios del Ethereum Developer Pack de ETH Kipu
+                </p>
+              </div>
+
+              <div className="flex gap-4 mt-4">
+                <img src="/images/logo-secondary.svg" alt="Imagen 1" className="object-contain" />
+                <img src="/images/logo-scroll.svg" alt="Imagen 2" className="object-contain" />
+              </div>
+            </div>
+            <div className="hidden lg:flex flex-col justify-end">
+              <Image
+                src="/images/illustration.svg"
+                alt="Imagen principal"
+                width={400}
+                height={240}
+                className="self-end object-contain"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col space-y-8">
             <AddressInput
               placeholder="Ingresa tu address o tu ENS"
               value={inputAddress ?? ""}
               onChange={value => setInputAddress(value as AddressType)}
               name="addressFaucet"
             />
-            <button className="h-10 px-2 rounded-full btn btn-primary btn-sm" onClick={sendETH} disabled={loading}>
-              {!loading ? (
-                <BanknotesIcon className="w-6 h-6" />
-              ) : (
-                <span className="loading loading-spinner loading-sm"></span>
-              )}
-              <span>Envíame ETH</span>
-            </button>
+            <div>
+              <button
+                className="h-16 py-4 px-10 rounded-lg btn btn-primary btn-sm text-xl"
+                onClick={sendETH}
+                disabled={loading}
+              >
+                {loading && <span className="loading loading-spinner loading-sm"></span>}
+                <span>Envíame ETH</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
       {isLoadingEvents ? (
         <div className="mt-8 text-xl font-bold text-center">Cargando Transacciones...</div>
       ) : (
-        <div className="flex flex-col justify-center flex-grow w-full mt-6 mb-4 md:w-5/6 lg:w-4/5 xl:w-3/5">
+        <div className="flex flex-col justify-center flex-grow w-full mt-6 mb-4 md:w-5/6 lg:w-4/5">
           <div className="my-2 text-xl font-bold text-center">
             {connectedAddress ? "Transacciones a tu cuenta" : "Últimas Transacciones"}
           </div>
-          <div className="overflow-x-auto shadow-2xl rounded-xl">
+          <div className="overflow-x-auto shadow-2xl rounded-xl border-2 border-primary ">
             <table className="table w-full bg-base-100 table-zebra">
-              <thead>
-                <tr className="rounded-xl">
-                  <th className="bg-primary text-primary-content">n°</th>
-                  <th className="bg-primary text-primary-content">Tx</th>
-                  <th className="bg-primary text-primary-content">Monto</th>
-                  <th className="bg-primary text-primary-content">Cuando</th>
+              <thead className="text-primary font-black bg-[#F2F4FF]">
+                <tr>
+                  <th>n°</th>
+                  <th>Tx</th>
+                  <th>Monto</th>
+                  <th>Cuando</th>
                 </tr>
               </thead>
               <tbody>
