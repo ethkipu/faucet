@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
 import relativeTime from "dayjs/plugin/relativeTime";
 import type { NextPage } from "next";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { Address as AddressType, createWalletClient, formatEther, http, parseEther } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import {
@@ -121,6 +122,35 @@ const Home: NextPage = () => {
   dayjs.extend(relativeTime);
   dayjs.locale("es");
 
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isVerified, setIsVerified] = useState(false);
+
+  async function handleCaptchaSubmission(token: string | null) {
+    try {
+      if (token) {
+        await fetch("/api", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token }),
+        });
+        setIsVerified(true);
+      }
+    } catch (e) {
+      setIsVerified(false);
+    }
+  }
+
+  const handleChange = (token: string | null) => {
+    handleCaptchaSubmission(token);
+  };
+
+  function handleExpired() {
+    setIsVerified(false);
+  }
+
   return (
     <div
       className={`container flex flex-col items-center self-center w-full px-4 mt-2 ${
@@ -161,10 +191,18 @@ const Home: NextPage = () => {
               name="addressFaucet"
             />
             <div>
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                ref={recaptchaRef}
+                onChange={handleChange}
+                onExpired={handleExpired}
+              />
+            </div>
+            <div>
               <button
                 className="h-16 py-4 px-10 rounded-lg btn btn-primary btn-sm text-xl"
                 onClick={sendETH}
-                disabled={loading}
+                disabled={loading || !isVerified}
               >
                 {loading && <span className="loading loading-spinner loading-sm"></span>}
                 <span>Envíame ETH</span>
