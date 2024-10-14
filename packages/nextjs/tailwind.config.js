@@ -10,7 +10,7 @@ module.exports = {
       {
         light: {
           // primary: "#93BBFB",
-          primary: "#818cf8",
+          primary: "#828eff",
           // "primary-content": "#212638",
           "primary-content": "white",
           secondary: "#DAE8FF",
@@ -28,7 +28,7 @@ module.exports = {
           warning: "#FFCF72",
           error: "#FF8863",
 
-          "--rounded-btn": "9999rem",
+          "--rounded-btn": "0.5rem",
 
           ".tooltip": {
             "--tooltip-tail": "6px",
@@ -60,7 +60,7 @@ module.exports = {
           warning: "#FFCF72",
           error: "#FF8863",
 
-          "--rounded-btn": "9999rem",
+          "--rounded-btn": "0.5rem",
 
           ".tooltip": {
             "--tooltip-tail": "6px",
@@ -80,6 +80,8 @@ module.exports = {
     extend: {
       boxShadow: {
         center: "0 0 12px -2px rgb(0 0 0 / 0.05)",
+        "custom-left-lg": "-8px 8px 0px 0px #828EFF",
+        "custom-left-sm": "-4px 4px 0px 0px #828EFF",
       },
       animation: {
         "pulse-fast": "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",

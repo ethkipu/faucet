@@ -89,13 +89,19 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled }: C
       reFocus={reFocus}
       prefix={
         ensName ? (
-          <div className="flex bg-base-300 rounded-l-full items-center">
-            {isEnsAvatarLoading && <div className="skeleton bg-base-200 w-[35px] h-[35px] rounded-full shrink-0"></div>}
+          <div className="flex rounded-lg items-center">
+            {isEnsAvatarLoading && <div className="skeleton w-[4rem] h-[4rem] rounded-lg shrink-0"></div>}
             {ensAvatar ? (
-              <span className="w-[35px]">
+              <span className="w-[5rem] bg-white">
                 {
                   // eslint-disable-next-line
-                  <img className="w-full rounded-full" src={ensAvatar} alt={`${ensAddress} avatar`} />
+                  <img
+                    className="rounded-full w-[5rem] h-[5rem]"
+                    src={ensAvatar}
+                    alt={`${ensAddress} avatar`}
+                    width={50}
+                    height={50}
+                  />
                 }
               </span>
             ) : null}
@@ -103,8 +109,8 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled }: C
           </div>
         ) : (
           (isEnsNameLoading || isEnsAddressLoading) && (
-            <div className="flex bg-base-300 rounded-l-full items-center gap-2 pr-2">
-              <div className="skeleton bg-base-200 w-[35px] h-[35px] rounded-full shrink-0"></div>
+            <div className="flex bg-base-300 rounded-lg items-center gap-2 pr-2">
+              <div className="skeleton bg-base-200 w-[4rem] h-[4rem] rounded-lg shrink-0"></div>
               <div className="skeleton bg-base-200 h-3 w-20"></div>
             </div>
           )
