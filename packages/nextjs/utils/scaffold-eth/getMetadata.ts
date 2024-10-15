@@ -3,12 +3,11 @@ import type { Metadata } from "next";
 const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : `http://localhost:${process.env.PORT || 3000}`;
-const titleTemplate = "%s | Faucet ETHKipu";
-
+const titleTemplate = "ETH Kipu | %s";
 export const getMetadata = ({
-  title,
+  title = "ETH Kipu | Faucet",
   description,
-  imageRelativePath = "/thumbnail.jpg",
+  imageRelativePath = "/images/opengraph-image.png",
 }: {
   title: string;
   description: string;
