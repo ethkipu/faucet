@@ -8,20 +8,41 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import type { NextPage } from "next";
 import { useTheme } from "next-themes";
 // import ReCAPTCHA from "react-google-recaptcha";
-import { Address as AddressType, createWalletClient, formatEther, http, parseEther } from "viem";
+import {
+  Address as AddressType,
+  WriteContractReturnType,
+  createWalletClient,
+  formatEther,
+  http,
+  parseEther,
+} from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import {
   //  hardhat, // holesky,
   scrollSepolia,
 } from "viem/chains";
 import { useAccount, usePublicClient, useWriteContract } from "wagmi";
-import { WriteContractReturnType } from "wagmi/actions";
+// import { WriteContractReturnType } from "wagmi/actions";
 import { AddressInput } from "~~/components/scaffold-eth";
 import { useScaffoldEventHistory, useScaffoldReadContract, useTransactor } from "~~/hooks/scaffold-eth";
 import { useScaffoldContract } from "~~/hooks/scaffold-eth/useScaffoldContract";
 import { getAlchemyHttpUrl } from "~~/utils/scaffold-eth";
 
-const account = privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY}`);
+const indexAccount = Math.floor(Math.random() * 10);
+const accounts = [
+  privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY}`),
+  privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY1}`),
+  privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY2}`),
+  privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY3}`),
+  privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY4}`),
+  privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY5}`),
+  privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY6}`),
+  privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY7}`),
+  privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY8}`),
+  privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY9}`),
+  privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY10}`),
+];
+
 const Home: NextPage = () => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -40,7 +61,7 @@ const Home: NextPage = () => {
 
   const localWalletClient: any = createWalletClient({
     chain: publicClient?.chain,
-    account,
+    account: accounts[indexAccount],
     transport: http(getAlchemyHttpUrl(scrollSepolia.id)),
     // transport: http(), //Para Hardhat
   });
@@ -76,7 +97,7 @@ const Home: NextPage = () => {
       address: Faucet?.address as any,
       functionName: "requestWithdraw",
       args: [inputAddress.trim(), parseEther(dailyLimitValue)],
-      account,
+      account: accounts[indexAccount],
     });
   };
 
@@ -159,11 +180,11 @@ const Home: NextPage = () => {
     >
       <div className="flex flex-col flex-grow w-full mt-8 mb-4 md:w-5/6 lg:w-4/5">
         <div className="space-y-8">
-          <div className="max-w-5/6 flex flex-col sm:flex-row justify-between rounded-lg overflow-hidden rounded-xl border-2 border-primary shadow-custom-left-lg bg-neutral-content">
-            <div className="w-full lg:w-1/2 p-6 flex flex-col justify-between">
+          <div className="flex flex-col justify-between overflow-hidden border-2 rounded-lg max-w-5/6 sm:flex-row rounded-xl border-primary shadow-custom-left-lg bg-neutral-content">
+            <div className="flex flex-col justify-between w-full p-6 lg:w-1/2">
               <div>
-                <h2 className="text-5xl font-black mb-4">Kipu Faucet</h2>
-                <p className="text-xl font-bold mb-6">
+                <h2 className="mb-4 text-5xl font-black">Kipu Faucet</h2>
+                <p className="mb-6 text-xl font-bold">
                   Recibe 0.1 ETH en testnet para tus ejercicios del Ethereum Developer Pack de ETH Kipu
                 </p>
               </div>
@@ -173,7 +194,7 @@ const Home: NextPage = () => {
                 <img src="/images/logo-scroll.svg" alt="Imagen 2" className="object-contain" />
               </div>
             </div>
-            <div className="hidden lg:flex flex-col justify-end">
+            <div className="flex-col justify-end hidden lg:flex">
               <Image
                 src="/images/illustration.svg"
                 alt="Imagen principal"
@@ -200,7 +221,7 @@ const Home: NextPage = () => {
             </div>
             <div>
               <button
-                className="h-16 py-4 px-10 rounded-lg btn btn-primary btn-sm text-xl"
+                className="h-16 px-10 py-4 text-xl rounded-lg btn btn-primary btn-sm"
                 onClick={sendETH}
                 disabled={loading}
               >
@@ -218,7 +239,7 @@ const Home: NextPage = () => {
           <div className="my-2 text-xl font-bold text-center">
             {connectedAddress ? "Transacciones a tu cuenta" : "Últimas Transacciones"}
           </div>
-          <div className="overflow-x-auto shadow-2xl rounded-xl border-2 border-primary ">
+          <div className="overflow-x-auto border-2 shadow-2xl rounded-xl border-primary ">
             <table className="table w-full bg-base-100 table-zebra">
               <thead className="text-primary font-black bg-[#F2F4FF]">
                 <tr>
