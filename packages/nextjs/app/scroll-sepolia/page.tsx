@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
 import relativeTime from "dayjs/plugin/relativeTime";
 import type { NextPage } from "next";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 // import ReCAPTCHA from "react-google-recaptcha";
 import {
   Address as AddressType,
@@ -26,9 +26,10 @@ import { useAccount, usePublicClient, useWriteContract } from "wagmi";
 import { AddressInput } from "~~/components/scaffold-eth";
 import { useScaffoldEventHistory, useScaffoldReadContract, useTransactor } from "~~/hooks/scaffold-eth";
 import { useScaffoldContract } from "~~/hooks/scaffold-eth/useScaffoldContract";
-import { getAlchemyHttpUrl } from "~~/utils/scaffold-eth";
 
-const indexAccount = Math.floor(Math.random() * 10);
+// import { getAlchemyHttpUrl } from "~~/utils/scaffold-eth";
+
+const indexAccount = Math.floor(Math.random() * 11);
 const accounts = [
   privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY}`),
   privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY1}`),
@@ -42,7 +43,6 @@ const accounts = [
   privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY9}`),
   privateKeyToAccount(`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY10}`),
 ];
-
 const Home: NextPage = () => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -62,7 +62,8 @@ const Home: NextPage = () => {
   const localWalletClient: any = createWalletClient({
     chain: publicClient?.chain,
     account: accounts[indexAccount],
-    transport: http(getAlchemyHttpUrl(scrollSepolia.id)),
+    // transport: http(getAlchemyHttpUrl(scrollSepolia.id)),
+    transport: http(`https://sepolia-rpc.scroll.io`),
     // transport: http(), //Para Hardhat
   });
 
@@ -206,7 +207,7 @@ const Home: NextPage = () => {
           </div>
           <div className="flex flex-col space-y-8">
             <AddressInput
-              placeholder="Ingresa tu address o tu ENS"
+              placeholder="Ingresa tu address"
               value={inputAddress ?? ""}
               onChange={value => setInputAddress(value as AddressType)}
               name="addressFaucet"
@@ -239,7 +240,7 @@ const Home: NextPage = () => {
           <div className="my-2 text-xl font-bold text-center">
             {connectedAddress ? "Transacciones a tu cuenta" : "Últimas Transacciones"}
           </div>
-          <div className="overflow-x-auto border-2 shadow-2xl rounded-xl border-primary ">
+          <div className="overflow-x-auto overflow-y-auto border-2 shadow-2xl rounded-xl border-primary max-h-60">
             <table className="table w-full bg-base-100 table-zebra">
               <thead className="text-primary font-black bg-[#F2F4FF]">
                 <tr>
@@ -251,7 +252,7 @@ const Home: NextPage = () => {
               </thead>
               <tbody>
                 {withdrawalEvents &&
-                  withdrawalEvents.slice(0, 5)?.map((event: any, index: number) => {
+                  withdrawalEvents.map((event: any, index: number) => {
                     return (
                       <tr key={index}>
                         <th>{withdrawalEvents?.length - index}</th>
@@ -278,7 +279,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       )}
-      {errorReadingEvents && <div className="mt-2 text-red-500">{errorReadingEvents.message}</div>}
+      {errorReadingEvents && <div className="mt-2 text-red-500">loading...</div>}
     </div>
   );
 };

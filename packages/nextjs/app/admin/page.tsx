@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import type { NextPage } from "next";
 import { useTheme } from "next-themes";
+import { useEffect, useMemo, useState } from "react";
 import { formatEther, parseEther } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import {
@@ -426,7 +426,7 @@ const Admin: NextPage = () => {
         <div className="flex flex-row justify-between">
           <div className="flex-grow pr-24">
             <AddressInput
-              placeholder="Coloque el address o el ENS de la cuenta"
+              placeholder="Coloque el address"
               value={addressToWhitelist}
               onChange={value => setAddressToWhitelist(value as AddressType)}
               name="addressToWhitelist"
@@ -445,7 +445,7 @@ const Admin: NextPage = () => {
         <div className="flex flex-row justify-between">
           <div className="flex-grow pr-12">
             <AddressInput
-              placeholder="Coloque el address o el ENS de la cuenta"
+              placeholder="Coloque el address"
               value={addressToTransferOwnership}
               onChange={value => setAddressToTransferOwnership(value as AddressType)}
               name="addressToTransferOwnership"
