@@ -104,7 +104,7 @@ const Home: NextPage = () => {
 
   const sendETH = async () => {
     setLoading(true);
-    if (!inputAddress) {
+    if (!inputAddress || dailyLimitValue == "0") {
       setLoading(false);
       return;
     }
