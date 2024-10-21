@@ -308,7 +308,7 @@ const Admin: NextPage = () => {
         </div>
 
         <div className="flex flex-row items-center justify-between col-span-2">
-          <div>Cuenta intermediaria</div>
+          <div>Deployer</div>
           <Address
             disableAddressLink
             format={window.innerWidth < 768 ? "short" : "long"}
@@ -401,7 +401,7 @@ const Admin: NextPage = () => {
           </div>
         </div>
 
-        <div className="mt-4 mb-2 text-white bg-indigo-400">Whitelist</div>
+        <div className="mt-4 mb-2 text-white bg-indigo-400">Whitelist | Cuentas intermediarias</div>
         {/* <MapWhitelisted /> */}
         {whitelistedAddresses.length > 0 &&
           whitelistedAddresses.map((user: any, index: number) => {
