@@ -186,7 +186,7 @@ const Home: NextPage = () => {
               <div>
                 <h2 className="mb-4 text-5xl font-black">Kipu Faucet</h2>
                 <p className="mb-6 text-xl font-bold">
-                  Recibe 0.1 ETH en testnet para tus ejercicios del Ethereum Developer Pack de ETH Kipu
+                  Recibe {dailyLimitValue} ETH en testnet para tus ejercicios del Ethereum Developer Pack de ETH Kipu
                 </p>
               </div>
 
