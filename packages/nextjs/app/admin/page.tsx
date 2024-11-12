@@ -10,7 +10,7 @@ import { privateKeyToAccount } from "viem/accounts";
 //   sepolia,
 // } from "viem/chains";
 import { usePublicClient } from "wagmi";
-import { Address, AddressInput } from "~~/components/scaffold-eth";
+import { Address, AddressInput, Balance } from "~~/components/scaffold-eth";
 import {
   useDeployedContractInfo,
   useScaffoldEventHistory,
@@ -417,18 +417,21 @@ const Admin: NextPage = () => {
                   address={user.args[0]}
                   onlyEnsOrAddress
                 />
-                <button
-                  className="text-white bg-indigo-400 btn btn-sm btn-primary hover:bg-indigo-600"
-                  onClick={removeFromWhitelist.bind(this, user.args[0])}
-                >
-                  Retirar
-                </button>
+                <span className="flex flex-row justify-end gap-0 lg:gap-12">
+                  <Balance address={user.args[0]} />
+                  <button
+                    className="text-white bg-indigo-400 btn btn-sm btn-primary hover:bg-indigo-600"
+                    onClick={removeFromWhitelist.bind(this, user.args[0])}
+                  >
+                    Retirar
+                  </button>
+                </span>
               </div>
             );
           })}
 
         <div className="flex flex-row justify-between">
-          <div className="flex-grow pr-24">
+          <div className="flex-grow pr-14">
             <AddressInput
               placeholder="Coloque el address"
               value={addressToWhitelist}
@@ -447,7 +450,7 @@ const Admin: NextPage = () => {
         <hr className="my-4 border-indigo-400" />
 
         <div className="flex flex-row justify-between">
-          <div className="flex-grow pr-12">
+          <div className="flex-grow pr-2">
             <AddressInput
               placeholder="Coloque el address"
               value={addressToTransferOwnership}
