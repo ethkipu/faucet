@@ -206,7 +206,11 @@ const Home: NextPage = () => {
               </div>
 
               <div className="flex gap-4 mt-4">
-                <img src="/images/logo-secondary.svg" alt="Imagen 1" className="object-contain" />
+                <img
+                  src="/images/logo-secondary.svg"
+                  alt="Imagen 1"
+                  className="object-contain w-[120px] sm:w-[150px]"
+                />
                 <ChangeChain />
               </div>
             </div>
@@ -227,17 +231,17 @@ const Home: NextPage = () => {
               onChange={value => setInputAddress(value as AddressType)}
               name="addressFaucet"
             />
-            <div>
-              {/* <ReCAPTCHA
+            {/* <div>
+              <ReCAPTCHA
                 sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
                 ref={recaptchaRef}
                 onChange={handleChange}
                 onExpired={handleExpired}
-              /> */}
-            </div>
+              /> 
+            </div>*/}
             <div>
               <button
-                className="h-16 px-10 py-4 text-xl rounded-lg btn btn-primary btn-sm"
+                className="flex items-center justify-center w-full h-16 px-10 text-xl rounded-lg btn btn-primary btn-sm"
                 onClick={sendETH}
                 disabled={loading}
               >

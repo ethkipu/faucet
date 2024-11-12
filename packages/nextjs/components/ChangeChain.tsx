@@ -53,36 +53,40 @@ export function ChangeChain() {
   }, []);
 
   const buttonClass =
-    "rounded-xl justify-between font-[700] text-lg h-[40px] border-solid border-2 hover:border-primary";
+    "rounded-xl justify-between font-[700] text-lg h-[50px] border-solid border-2 hover:border-primary";
 
   return (
     <>
       {mounted && (
         <>
-          <button
-            className="w-[140px] h-[50px] btn btn-primary btn-sm text-center flex flex-row items-center"
-            onClick={() => {
-              setIsOpen(true);
-              modalRef?.current?.showModal();
-            }}
-          >
-            {targetNetwork.id == scrollSepolia.id && (
-              <span className="flex flex-row gap-2 text-2xl">
-                <img src="/images/logo-scroll.png" width={30} alt="Imagen 2" className="object-contain" /> Scroll
-              </span>
-            )}
-            {targetNetwork.id == sepolia.id && (
-              <span className="flex flex-row gap-2 text-2xl">
-                <img
-                  src="/images/ethereum-logo.png"
-                  alt="Imagen 3"
-                  width={30}
-                  className="object-contain rounded-lg ml-[-5px]"
-                />{" "}
-                Sepolia
-              </span>
-            )}
-          </button>
+          <span className="flex flex-col items-center">
+            <span className="absolute flex text-sm text-center mt-[-20px]">Cambiar de Red</span>
+            <button
+              className="w-[140px] h-[60px] btn btn-primary btn-sm text-center flex flex-row items-center"
+              onClick={() => {
+                setIsOpen(true);
+                modalRef?.current?.showModal();
+              }}
+            >
+              {targetNetwork.id == scrollSepolia.id && (
+                <span className="flex flex-row gap-2 text-2xl align-middle">
+                  <img src="/images/logo-scroll.png" width={30} alt="Imagen 2" className="object-contain" />
+                  <span className="">Scroll</span>
+                </span>
+              )}
+              {targetNetwork.id == sepolia.id && (
+                <span className="flex flex-row gap-2 text-2xl align-middle">
+                  <img
+                    src="/images/ethereum-logo.png"
+                    alt="Imagen 3"
+                    width={30}
+                    className="object-contain rounded-lg ml-[-5px]"
+                  />{" "}
+                  <span className="">Sepolia</span>
+                </span>
+              )}
+            </button>
+          </span>
 
           {/* Modal */}
           <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
@@ -109,18 +113,26 @@ export function ChangeChain() {
               <div className="w-full mt-0 modal-action">
                 <div className="flex flex-col w-full gap-1 text-foreground">
                   <button
-                    className={`${buttonClass} ${targetNetwork.id === sepolia.id && "bg-primary text-white shadow-md"}`}
+                    className={`${buttonClass} ${
+                      targetNetwork.id === sepolia.id && "bg-primary text-white shadow-md border-primary"
+                    }`}
                     onClick={() => clickChain(sepolia.id)}
                   >
-                    <>Sepolia</>
+                    <span className="flex flex-row gap-2 text-xl">
+                      <img src="/images/ethereum-logo.png" alt="Imagen 3" width={30} className="object-contain ml-2" />{" "}
+                      Ethereum Sepolia
+                    </span>
                   </button>
                   <button
                     className={`${buttonClass} ${
-                      targetNetwork.id === scrollSepolia.id && "bg-primary text-white shadow-md"
+                      targetNetwork.id === scrollSepolia.id && "bg-primary text-white shadow-md border-primary"
                     }`}
                     onClick={() => clickChain(scrollSepolia.id)}
                   >
-                    <>Scroll Sepolia</>
+                    <span className="flex flex-row gap-2 text-xl">
+                      <img src="/images/logo-scroll.png" width={30} alt="Imagen 2" className="object-contain ml-2" />{" "}
+                      Scroll Sepolia
+                    </span>
                   </button>
                 </div>
               </div>
