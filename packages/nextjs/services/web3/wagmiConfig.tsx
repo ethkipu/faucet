@@ -1,10 +1,9 @@
+import { wagmiConnectors } from "./wagmiConnectors";
 import { Chain, createClient, http } from "viem";
 import { hardhat, mainnet } from "viem/chains";
 import { createConfig } from "wagmi";
 import scaffoldConfig from "~~/scaffold.config";
-import { wagmiConnectors } from "./wagmiConnectors";
-
-// import { getAlchemyHttpUrl } from "~~/utils/scaffold-eth";
+import { getAlchemyHttpUrl } from "~~/utils/scaffold-eth";
 
 const { targetNetworks } = scaffoldConfig;
 
@@ -21,8 +20,8 @@ export const wagmiConfig = createConfig({
   client({ chain }) {
     return createClient({
       chain,
-      // transport: http(getAlchemyHttpUrl(chain.id)),
-      transport: http(`https://sepolia-rpc.scroll.io`),
+      transport: http(getAlchemyHttpUrl(chain.id)),
+      // transport: http(`https://sepolia-rpc.scroll.io`),
       ...(chain.id !== (hardhat as Chain).id
         ? {
             pollingInterval: scaffoldConfig.pollingInterval,

@@ -37,8 +37,28 @@ export const RPC_CHAIN_NAMES: Record<number, string> = {
 
 export const getAlchemyHttpUrl = (chainId: number) => {
   return RPC_CHAIN_NAMES[chainId]
-    ? `https://${RPC_CHAIN_NAMES[chainId]}.g.alchemy.com/v2/${scaffoldConfig.alchemyApiKey}`
+    ? // ? `https://${RPC_CHAIN_NAMES[chainId]}.g.alchemy.com/v2/${scaffoldConfig.alchemyApiKey}`
+      // : undefined;
+      getRPCUrl(chainId)
     : undefined;
+};
+
+const getRPCUrl = (chainId: number) => {
+  let RPC;
+  switch (chainId) {
+    case chains.mainnet.id:
+      RPC = "https://ethereum-rpc.publicnode.com";
+      break;
+    case chains.scrollSepolia.id:
+      RPC = "https://sepolia-rpc.scroll.io";
+      // RPC =`https://${RPC_CHAIN_NAMES[chainId]}.g.alchemy.com/v2/${scaffoldConfig.alchemyApiKey}`;
+      break;
+    case chains.sepolia.id:
+      RPC = "https://rpc.sepolia.ethpandaops.io";
+      // RPC = `https://${RPC_CHAIN_NAMES[chainId]}.g.alchemy.com/v2/${scaffoldConfig.alchemyApiKey}`
+      break;
+  }
+  return RPC;
 };
 
 export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
@@ -81,7 +101,7 @@ export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
     color: "#1969ff",
   },
   [chains.scrollSepolia.id]: {
-    color: "#fbebd4",
+    color: "#1969ff",
   },
   [chains.holesky.id]: {
     color: "#fbebd4",

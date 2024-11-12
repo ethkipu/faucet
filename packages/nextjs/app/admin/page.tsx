@@ -1,14 +1,14 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import type { NextPage } from "next";
 import { useTheme } from "next-themes";
-import { useEffect, useMemo, useState } from "react";
 import { formatEther, parseEther } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import {
-  //   hardhat,
-  scrollSepolia,
-} from "viem/chains";
+// import {
+//   scrollSepolia,
+//   sepolia,
+// } from "viem/chains";
 import { usePublicClient } from "wagmi";
 import { Address, AddressInput } from "~~/components/scaffold-eth";
 import {
@@ -16,6 +16,7 @@ import {
   useScaffoldEventHistory,
   useScaffoldReadContract,
   useScaffoldWriteContract,
+  useTargetNetwork,
 } from "~~/hooks/scaffold-eth";
 import { AddressType } from "~~/types/abitype/abi";
 
@@ -24,8 +25,11 @@ const Admin: NextPage = () => {
 
   const { data: deployedContractData, isLoading: deployedContractLoading } = useDeployedContractInfo("Faucet");
 
+  const { targetNetwork } = useTargetNetwork();
+
   // const publicClient = usePublicClient({ chainId: hardhat.id });
-  const publicClient = usePublicClient({ chainId: scrollSepolia.id });
+  // const publicClient = usePublicClient({ chainId: scrollSepolia.id });
+  const publicClient = usePublicClient({ chainId: targetNetwork.id });
 
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -274,7 +278,7 @@ const Admin: NextPage = () => {
         mounted && resolvedTheme === "dark" ? "text-white" : "text-indigo-400"
       } md:w-4/5 lg:w-2/3 leading-8`}
     >
-      <div className="mb-2 text-3xl font-bold text-center">Faucet ETH Kipu - Scroll Sepolia</div>
+      <div className="mb-2 text-3xl font-bold text-center">Faucet ETH Kipu - {targetNetwork.name}</div>
       <div className="mb-4 text-xl font-bold">Página de administración</div>
       {/* Admin Panel */}
       <div className="flex flex-col w-full">

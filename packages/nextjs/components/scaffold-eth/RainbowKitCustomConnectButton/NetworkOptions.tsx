@@ -29,9 +29,9 @@ export const NetworkOptions = ({ hidden = false }: NetworkOptionsProps) => {
                 switchChain?.({ chainId: allowedNetwork.id });
               }}
             >
-              <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />
+              <ArrowsRightLeftIcon className="w-4 h-6 ml-2 sm:ml-0" />
               <span>
-                Switch to{" "}
+                Cambiar a{" "}
                 <span
                   style={{
                     color: getNetworkColor(allowedNetwork, isDarkMode),

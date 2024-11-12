@@ -40,7 +40,7 @@ export const useScaffoldWriteContract = <TContractName extends ContractName>(
     options?: ScaffoldWriteContractOptions,
   ) => {
     if (!deployedContractData) {
-      notification.error("Target Contract is not deployed, did you forget to run `yarn deploy`?");
+      notification.error("Contrato no desplegado, ¿olvidaste correr `yarn deploy`?");
       return;
     }
 
@@ -90,15 +90,15 @@ export const useScaffoldWriteContract = <TContractName extends ContractName>(
     options?: Omit<ScaffoldWriteContractOptions, "onBlockConfirmation" | "blockConfirmations">,
   ) => {
     if (!deployedContractData) {
-      notification.error("Target Contract is not deployed, did you forget to run `yarn deploy`?");
+      notification.error("Contrato no desplegado, ¿olvidaste correr `yarn deploy`?");
       return;
     }
     if (!chain?.id) {
-      notification.error("Please connect your wallet");
+      notification.error("Por favor, conecta tu wallet");
       return;
     }
     if (chain?.id !== targetNetwork.id) {
-      notification.error("You are on the wrong network");
+      notification.error("Estás en la red equivocada");
       return;
     }
 

@@ -88,28 +88,30 @@ export const Header = () => {
   return (
     <div className="sticky top-0 z-20 justify-between flex-shrink-0 min-h-0 px-0 shadow-md lg:static navbar bg-base-100 shadow-secondary sm:px-2">
       <div className="w-auto navbar-start lg:w-1/2">
-        <div className="lg:hidden dropdown" ref={burgerMenuRef}>
-          <button
-            tabIndex={0}
-            className={`ml-1 btn btn-ghost ${isDrawerOpen ? "hover:bg-secondary" : "hover:bg-transparent"}`}
-            onClick={() => {
-              setIsDrawerOpen(prevIsOpenState => !prevIsOpenState);
-            }}
-          >
-            <Bars3Icon className="h-1/2" />
-          </button>
-          {isDrawerOpen && (
-            <ul
+        {isAdmin && (
+          <div className="lg:hidden dropdown" ref={burgerMenuRef}>
+            <button
               tabIndex={0}
-              className="p-2 mt-3 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+              className={`ml-1 btn btn-ghost ${isDrawerOpen ? "hover:bg-secondary" : "hover:bg-transparent"}`}
               onClick={() => {
-                setIsDrawerOpen(false);
+                setIsDrawerOpen(prevIsOpenState => !prevIsOpenState);
               }}
             >
-              {isAdmin && <HeaderMenuLinks />}
-            </ul>
-          )}
-        </div>
+              <Bars3Icon className="h-1/2" />
+            </button>
+            {isDrawerOpen && (
+              <ul
+                tabIndex={0}
+                className="p-2 mt-3 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                onClick={() => {
+                  setIsDrawerOpen(false);
+                }}
+              >
+                <HeaderMenuLinks />
+              </ul>
+            )}
+          </div>
+        )}
         <Link href="/" passHref className="items-center hidden gap-2 ml-4 mr-6 lg:flex shrink-0">
           <div className="relative flex w-[145px] h-10">
             <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" sizes="100%" priority />
@@ -123,7 +125,7 @@ export const Header = () => {
           {isAdmin && <HeaderMenuLinks />}
         </ul>
       </div>
-      <div className="flex-grow mr-4 navbar-end">
+      <div className="flex-grow gap-2 mr-4 navbar-end">
         <RainbowKitCustomConnectButton />
         {/* <FaucetButton /> */}
       </div>

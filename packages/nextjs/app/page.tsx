@@ -1,12 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
 import relativeTime from "dayjs/plugin/relativeTime";
 import type { NextPage } from "next";
 import { useTheme } from "next-themes";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 // import ReCAPTCHA from "react-google-recaptcha";
 import {
   Address as AddressType,
@@ -17,17 +17,26 @@ import {
   parseEther,
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import {
-  //  hardhat, // holesky,
-  scrollSepolia,
-} from "viem/chains";
+// import {
+//  hardhat, // holesky,
+//   scrollSepolia,
+//   sepolia
+// } from "viem/chains";
 import { useAccount, usePublicClient, useWriteContract } from "wagmi";
+import { ChangeChain } from "~~/components/ChangeChain";
 // import { WriteContractReturnType } from "wagmi/actions";
 import { AddressInput } from "~~/components/scaffold-eth";
-import { useScaffoldEventHistory, useScaffoldReadContract, useTransactor } from "~~/hooks/scaffold-eth";
+import {
+  useScaffoldEventHistory,
+  useScaffoldReadContract,
+  useTargetNetwork,
+  useTransactor,
+} from "~~/hooks/scaffold-eth";
 import { useScaffoldContract } from "~~/hooks/scaffold-eth/useScaffoldContract";
+import { getAlchemyHttpUrl } from "~~/utils/scaffold-eth";
 
-// import { getAlchemyHttpUrl } from "~~/utils/scaffold-eth";
+// import { useGlobalState } from "~~/services/store/store";
+// import { getTargetNetworks } from "~~/utils/scaffold-eth/networks";
 
 const indexAccount = Math.floor(Math.random() * 11);
 const accounts = [
@@ -56,14 +65,19 @@ const Home: NextPage = () => {
 
   const { address: connectedAddress } = useAccount();
 
+  const { targetNetwork } = useTargetNetwork();
+
+  // const setTargetNetwork = useGlobalState(({ setTargetNetwork }) => setTargetNetwork);
+
   // const publicClient = usePublicClient({ chainId: hardhat.id });
-  const publicClient = usePublicClient({ chainId: scrollSepolia.id });
+  const publicClient = usePublicClient({ chainId: targetNetwork.id });
 
   const localWalletClient: any = createWalletClient({
     chain: publicClient?.chain,
     account: accounts[indexAccount],
+    transport: http(getAlchemyHttpUrl(targetNetwork.id)),
     // transport: http(getAlchemyHttpUrl(scrollSepolia.id)),
-    transport: http(`https://sepolia-rpc.scroll.io`),
+    //  transport: http(`https://sepolia-rpc.scroll.io`),
     // transport: http(), //Para Hardhat
   });
 
@@ -181,18 +195,19 @@ const Home: NextPage = () => {
     >
       <div className="flex flex-col flex-grow w-full mt-8 mb-4 md:w-5/6 lg:w-4/5">
         <div className="space-y-8">
-          <div className="flex flex-col justify-between overflow-hidden border-2 rounded-lg max-w-5/6 sm:flex-row rounded-xl border-primary shadow-custom-left-lg bg-neutral-content">
+          <div className="flex flex-col justify-between overflow-hidden border-2 max-w-5/6 sm:flex-row rounded-xl border-primary shadow-custom-left-lg bg-neutral-content">
             <div className="flex flex-col justify-between w-full p-6 lg:w-1/2">
               <div>
                 <h2 className="mb-4 text-5xl font-black">Kipu Faucet</h2>
                 <p className="mb-6 text-xl font-bold">
-                  Recibe {dailyLimitValue} ETH en testnet para tus ejercicios del Ethereum Developer Pack de ETH Kipu
+                  Recibe {dailyLimitValue} ETH en la testnet de {targetNetwork.name} para tus ejercicios del Ethereum
+                  Developer Pack de ETH Kipu
                 </p>
               </div>
 
               <div className="flex gap-4 mt-4">
                 <img src="/images/logo-secondary.svg" alt="Imagen 1" className="object-contain" />
-                <img src="/images/logo-scroll.svg" alt="Imagen 2" className="object-contain" />
+                <ChangeChain />
               </div>
             </div>
             <div className="flex-col justify-end hidden lg:flex">
@@ -207,7 +222,7 @@ const Home: NextPage = () => {
           </div>
           <div className="flex flex-col space-y-8">
             <AddressInput
-              placeholder="Ingresa tu address"
+              placeholder="Ingresa tu address o tu ENS"
               value={inputAddress ?? ""}
               onChange={value => setInputAddress(value as AddressType)}
               name="addressFaucet"

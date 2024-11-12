@@ -5,9 +5,9 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
-  31337: {
+  534351: {
     Faucet: {
-      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      address: "0x3A4E495da6E80eF37542bc1e28F833A23922dE6e",
       abi: [
         {
           inputs: [],
@@ -368,9 +368,9 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
   },
-  534351: {
+  11155111: {
     Faucet: {
-      address: "0x3A4E495da6E80eF37542bc1e28F833A23922dE6e",
+      address: "0xAa685Dd3a3A8d2fb3cD1E089C1d5E675c29222b1",
       abi: [
         {
           inputs: [],
