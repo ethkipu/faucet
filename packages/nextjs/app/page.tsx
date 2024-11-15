@@ -33,7 +33,7 @@ import {
   useTransactor,
 } from "~~/hooks/scaffold-eth";
 import { useScaffoldContract } from "~~/hooks/scaffold-eth/useScaffoldContract";
-import { getAlchemyHttpUrl } from "~~/utils/scaffold-eth";
+import { getAlchemyHttpUrl, getBlockExplorerTxLink } from "~~/utils/scaffold-eth";
 
 // import { useGlobalState } from "~~/services/store/store";
 // import { getTargetNetworks } from "~~/utils/scaffold-eth/networks";
@@ -278,7 +278,7 @@ const Home: NextPage = () => {
 
                         <td className="text-blue-500">
                           <a
-                            href={`https://sepolia.scrollscan.com/tx/${event.transactionHash}`}
+                            href={getBlockExplorerTxLink(targetNetwork.id, event?.transactionHash)}
                             target="_blank"
                             rel="noreferrer"
                           >
