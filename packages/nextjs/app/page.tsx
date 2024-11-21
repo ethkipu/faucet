@@ -113,6 +113,7 @@ const Home: NextPage = () => {
       functionName: "requestWithdraw",
       args: [inputAddress.trim(), parseEther(dailyLimitValue)],
       account: accounts[indexAccount],
+      gas: 150000n,
     });
   };
 
