@@ -50,7 +50,7 @@ const getRPCUrl = (chainId: number) => {
       RPC = "https://ethereum-rpc.publicnode.com";
       break;
     case chains.scrollSepolia.id:
-      RPC = "https://sepolia-rpc.scroll.io";
+      RPC = "https://sepolia-rpc.scroll.io/";
       // RPC =`https://${RPC_CHAIN_NAMES[chainId]}.g.alchemy.com/v2/${scaffoldConfig.alchemyApiKey}`;
       break;
     case chains.sepolia.id:

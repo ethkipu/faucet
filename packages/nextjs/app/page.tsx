@@ -15,6 +15,7 @@ import {
   formatEther,
   http,
   parseEther,
+  parseGwei,
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 // import {
@@ -113,7 +114,8 @@ const Home: NextPage = () => {
       functionName: "requestWithdraw",
       args: [inputAddress.trim(), parseEther(dailyLimitValue)],
       account: accounts[indexAccount],
-      gas: 500000n,
+      gas: 1000000n,
+      gasPrice: parseGwei("10"),
     });
   };
 
