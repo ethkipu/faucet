@@ -114,8 +114,8 @@ const Home: NextPage = () => {
       functionName: "requestWithdraw",
       args: [inputAddress.trim(), parseEther(dailyLimitValue)],
       account: accounts[indexAccount],
-      gas: 5000000n,
-      gasPrice: parseGwei("8"),
+      gas: 1000000n,
+      gasPrice: parseGwei("7"),
     });
   };
 
