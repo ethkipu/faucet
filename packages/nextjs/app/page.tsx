@@ -16,7 +16,6 @@ import {
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import {
-  scrollSepolia,
   sepolia
 } from "viem/chains";
 import { usePublicClient, useWriteContract } from "wagmi";
