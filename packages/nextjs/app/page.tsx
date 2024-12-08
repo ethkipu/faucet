@@ -15,11 +15,10 @@ import {
   parseGwei,
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-// import {
-//  hardhat, // holesky,
-//   scrollSepolia,
-//   sepolia
-// } from "viem/chains";
+import {
+  scrollSepolia,
+  sepolia
+} from "viem/chains";
 import { usePublicClient, useWriteContract } from "wagmi";
 import { ChangeChain } from "~~/components/ChangeChain";
 // import { WriteContractReturnType } from "wagmi/actions";
@@ -108,8 +107,8 @@ const Home: NextPage = () => {
       functionName: "requestWithdraw",
       args: [inputAddress.trim(), parseEther(dailyLimitValue)],
       account: accounts[indexAccount],
-      gas: 500000n,
-      gasPrice: parseGwei("7")
+      gas: targetNetwork.id === sepolia.id ? 1000000n : 200000n,
+      gasPrice: targetNetwork.id === sepolia.id ? parseGwei("8") : parseGwei("2")
     });
   };
 
