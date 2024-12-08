@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import "dayjs/locale/es";
 import type { NextPage } from "next";
 import { useTheme } from "next-themes";
 // import ReCAPTCHA from "react-google-recaptcha";
