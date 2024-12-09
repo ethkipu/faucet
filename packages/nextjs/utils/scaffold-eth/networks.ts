@@ -50,14 +50,15 @@ const getRPCUrl = (chainId: number) => {
       RPC = "https://ethereum-rpc.publicnode.com";
       break;
     case chains.scrollSepolia.id:
-      RPC = "https://sepolia-rpc.scroll.io/";
-      // RPC =`https://${RPC_CHAIN_NAMES[chainId]}.g.alchemy.com/v2/${scaffoldConfig.alchemyApiKey}`;
+      RPC = "https://scroll-sepolia.g.alchemy.com/v2/BrfjcM6A_EOc_ADuXumU3Dec0AKCZz0Y";
       break;
+    // RPC = "https://sepolia-rpc.scroll.io/";
+    // RPC =`https://${RPC_CHAIN_NAMES[chainId]}.g.alchemy.com/v2/${scaffoldConfig.alchemyApiKey}`;
     case chains.sepolia.id:
-      // RPC = "https://rpc.sepolia.ethpandaops.io";
       RPC = "https://ethereum-sepolia-rpc.publicnode.com";
-      // RPC = `https://${RPC_CHAIN_NAMES[chainId]}.g.alchemy.com/v2/${scaffoldConfig.alchemyApiKey}`
       break;
+    // RPC = "https://rpc.sepolia.ethpandaops.io";
+    // RPC = `https://${RPC_CHAIN_NAMES[chainId]}.g.alchemy.com/v2/${scaffoldConfig.alchemyApiKey}`
   }
   return RPC;
 };
