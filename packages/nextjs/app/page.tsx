@@ -101,8 +101,8 @@ const Home: NextPage = () => {
       args: [inputAddress.trim(), parseEther(dailyLimitValue)],
       account: accounts[indexAccount],
       // gasPrice: parseGwei("1"),
-      gas: BigInt("250000"),
-      maxPriorityFeePerGas: parseGwei("1"),
+      gas: BigInt("300000"),
+      maxPriorityFeePerGas: parseGwei("5"),
       maxFeePerGas: parseGwei(String(precioGas)),
     });
   };
@@ -242,12 +242,12 @@ const Home: NextPage = () => {
                       className="w-full h-2 bg-white rounded-lg cursor-pointer accent-primary"
                       step={1}
                       min={1}
-                      max={25}
+                      max={70}
                       id="precioGas"
                     />
                     <div className="flex justify-between w-full font-bold">
                       <span>min 1</span>
-                      <span>max 25</span>
+                      <span>max 70</span>
                     </div>
                   </div>
                 </div>
